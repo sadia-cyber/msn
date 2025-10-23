@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noman & Sadia — Our Love Story</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000010;
+  color: white;
+  font-family: Arial, sans-serif;
+  height: 0%;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+/* Just for testing scroll */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 40px;
+}
+
+
+/* animation to move stars slowly */
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto 70px;
+      padding: 20px;
+    }
+
+    /* Header banner with couple picture */
+    header {
+      display: flex;             /* use flexbox */
+      justify-content: center;   /* center horizontally */
+      align-items: center;   /* align items at the top vertically */
+      gap: 20px;                 /* space between image and text */
+      padding: 20px 0;           /* some top and bottom padding */
+      color: #ccaaffcc;
+      flex-direction: column;
+      font-style: italic;
+}
+    #couplePhoto {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+     box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+    header h1 {
+     font-size: 2.5rem;
+     margin-top: 20px;
+     line-height: 1.2;
+     align-self: center;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+    /* Cards grid */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 80px;
+      margin-bottom: 50px;
+    }
+    .card {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 15px;
+      padding: 35px 13PX;
+      box-shadow: 0 0 15px #00ced1aa;
+      text-align: center;
+      cursor: default;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #f0e8ff;
+      user-select: none;
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff77cccc;
+    }
+    .card img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px #00ced1aa;
+    }
+    .card h3 {
+      margin: 8px 0 10px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #ff88cc;
+      text-shadow: 1px 1px 4px #000a;
+    }
+    .card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #ddd;
+    }
+    .card .date {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 8px;
+      color: #ccaaffcc;
+    }
+
+    /* Special feelings tags */
+    .feelings-section {
+      margin-bottom: 60px;
+      margin-top: 60px;
+    }
+    .feelings-section h2 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #ff77cc;
+      text-shadow: 1px 1px 4px #000a;
+      user-select: none;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-height: 260px;
+      overflow-y: auto;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 15px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.3);
+      user-select: none;
+      margin-top: 60px;
+    }
+    .tag {
+      background: rgba(255 255 255 / 0.1);
+      border: 1px solid rgba(255 255 255 / 0.3);
+      border-radius: 30px;
+      padding: 8px 18px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      color: #ddd;
+      min-width: 130px;
+      text-align: center;
+      box-shadow: 0 0 6px rgba(255 255 255 / 0.1);
+      user-select: none;
+    }
+    .tag:hover {
+      background: rgba(255 255 255 / 0.25);
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 0 18px #00ced1;
+    }
+
+    #letterBox {
+      background: rgba(0,0,0,0.55);
+      padding: 30px 25px;
+      border-radius: 14px;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      min-height: 380px;
+      max-height: 520px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      box-shadow: 0 0 24px #8a2be2;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.85);
+      margin: 35px auto 70px;
+      max-width: 850px;
+      user-select: text;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* 100 reasons sections */
+    section.reasons-section {
+      margin-bottom: 70px;
+    }
+    section.reasons-section h2 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #ff77cc;
+      text-shadow: 1px 1px 4px #000a;
+      user-select: none;
+    }
+    .reason-list {
+      columns: 2;
+      column-gap: 40px;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #eee;
+      max-height: 420px;
+      overflow-y: auto;
+      padding: 10px 30px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.35);
+      box-shadow: 0 0 20px #8a2be2;
+      user-select: text;
+    }
+    @media (max-width: 600px) {
+      .reason-list {
+        columns: 1;
+      }
+    }
+
+    /* Final wrap up text */
+    #finalWrap {
+      text-align: center;
+      font-size: 1.3rem;
+      margin: 50px auto 100px;
+      max-width: 650px;
+      padding: 20px 30px;
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 18px;
+      color: #ff77cc;
+      box-shadow: 0 0 35px #ff77ccaa;
+      font-weight: 600;
+      user-select: none;
+      line-height: 1.6;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* Arabic quotes section */
+    .arabic-section {
+      max-width: 850px;
+      margin: 0 auto 100px;
+      padding: 20px 15px;
+      background: rgba(0,0,0,0.45);
+      border-radius: 20px;
+      box-shadow: 0 0 30px #00ced1bb;
+      user-select: none;
+    }
+    .arabic-section h2 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #ff77cc;
+      text-shadow: 1px 1px 4px #000a;
+    }
+    #arabicText {
+      font-size: 2.3rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 8px;
+      color: #00ced1;
+      font-family: 'Amiri', serif;
+      user-select: text;
+      min-height: 60px;
+      line-height: 1.3;
+      text-shadow: 0 0 8px #00ced1aa;
+    }
+    #urduTranslation {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #ddd;
+      text-align: center;
+      margin-bottom: 20px;
+      user-select: text;
+      min-height: 40px;
+    }
+
+    #heartTag {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    #heartTag button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 2.8rem;
+      color: #ff77cc;
+      filter: drop-shadow(0 0 4px #ff77ccbb);
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+    #heartTag button:hover {
+      transform: scale(1.3);
+      color: #ff44aa;
+      filter: drop-shadow(0 0 12px #ff44aacc);
+    }
+
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+<div class="content">
+  <div style="height:0px;"></div>
+</div>
+
+  <!-- Header with couple picture -->
+  <header>
+    <h3><i>OUR STORY</i></h3>
+    <img id="couplePhoto" src="./images/WhatsApp Image 2025-10-23 at 5.23.52 AM.jpeg" alt="Noman and Sadia Couple Picture" />
+    <h1><i>Noman & Sadia</i></h1>
+  </header>
+
+  <div class="container">
+
+    <!-- 8 Story Cards -->
+    <section aria-label="Our Love Story Moments" class="cards">
+      <article class="card" tabindex="0" aria-label="First call on 23 Nov 2024">
+        <div class="date">23 NOV 2024</div>
+        <img src="./images/WhatsApp Image 2025-10-23 at 7.02.51 AM.jpeg" alt="First Call" />
+        <h3>First Call</h3>
+        <p>A random call in the lovely morning I don’t know how I accepted your call. After talking for a few minutes and then you went to sleep, I don’t know why I waited without any reason. Maybe we were meant to meet. Alhumdulillah, we met, and I felt the love, the care. It felt like a miracle. You mean a lot to me. I love your voice.</p>
+      </article>
+
+      <article class="card" tabindex="0" aria-label="First time we saw each other on 27 Nov 2024">
+        <div class="date">27 NOV 2024</div>
+        <img src="./images/WhatsApp Image 2025-10-23 at 7.15.10 AM.jpeg" alt="First time seeing each other" />
+        <h3>First Time Seeing Each Other</h3>
+        <p>When we had our first video call, you were wearing a black hoodie with the hood up. The first time I saw you, you looked very attractive, and I couldn’t believe it myself—I really love your hair.The moment our eyes locked — a story just beginning, forever etched in time.</p>
+      </article>
+
+      <article class="card" tabindex="0" aria-label="First time I felt you with me on 07 Dec 2024">
+        <div class="date">07 DEC 2024</div>
+        <img src="./images/WhatsApp Image 2025-10-23 at 7.21.41 AM.jpeg" alt="Feeling you with me" />
+        <h3>First Time I Felt You With Me</h3>
+        <p>I had an accident, and they took my brother. When I was crying and you were with me, just like a mother, that’s when you became special.But thanks to you being there for me, I felt a little less alone</p>
+      </article>
+
+      <article class="card" tabindex="0" aria-label="After first fight on 30 March 2025">
+        <div class="date">30 MARCh 2025</div>
+        <img src="./images/WhatsApp Image 2025-10-23 at 7.46.26 AM.jpeg">
+        <h3>After First Fight</h3>
+        <p>In our first fight, you get upset but don’t get angry; you stay silent & I m scared of your silence, and it feels like my life depends on it. That’s why I keep irritating you while trying to calm you down and I m sorry. But you are special to me, and I never want to be far from you.</p>
+      </article>
+
+      <article class="card" tabindex="0" aria-label="Creating our heart on 2 May 2025">
+        <div class="date">2 MAY 2025</div>
+        <img src="./images/WhatsApp Image 2025-10-23 at 5.23.53 AM.jpeg" />
+        <h3>Create Our Heart</h3>
+        <p>Building something beautiful together, a heart that beats only for us.Our first heart wasn’t physical, but it’s still something. Even in my stupidest activities, you didn’t get irritated with me and stood by my side.This is special to me.</p>
+      </article>
+
+      <article class="card" tabindex="0" aria-label="Set as wallpaper holding hands in imagination on NO DATE">
+        <div class="date">NO DATE</div>
+        <img src="./images/WhatsApp Image 2025-10-23 at 5.23.54 AM (1).jpeg" alt="Holding hands in imagination" />
+        <h3>Holding Hands in Imagination</h3>
+        <p>Imagining your hand in mine, a touch that soothes even from afar.This is my sweetest comfort.After Baba, there’s someone whose hand, when held, makes me feel the safest — for me, that hand is yours.</p>
+      </article>
+
+      <article class="card" tabindex="0" aria-label="Hug in imagination on NO DATE">
+        <div class="date">NO DATE</div>
+        <img src="./images/WhatsApp Image 2025-10-23 at 5.23.54 AM.jpeg" alt="Hug in imagination" />
+        <h3>Hug in Imagination</h3>
+        <p>When I imagine your hug, it feels like a warm blanket wrapping me in comfort, even when you’re far away. Hugging mom helps me wash away all my tiredness, and after mom, you are the one who helps me let go of my exhaustion. Thank you for bringing back that feeling for me.</p>
+      </article>
+
+      <article class="card" tabindex="0" aria-label="Forever Us">
+        <div class="date">Everyday</div>
+        <img src="./images/WhatsApp Image 2025-10-23 at 5.23.54 AM (2).jpeg" alt="Forever Us" />
+        <h3>Forever Us</h3>
+        <p>Every moment, every day — growing closer, hand in hand, heart to heart.I want to be with you forever, always by your side. I want to be special to you, your life. I want to stay with you, even through your toughest days.</p>
+      </article>
+    </section>
+
+    <!-- Feelings tags section -->
+    <section class="feelings-section" aria-label="Special feelings and letters">
+      <h2>Remember one thing: no matter how bad things get, I am always in your heart and with you...</h2>
+      <div class="tags" role="list">
+        <button class="tag" data-letter="sad">Feeling Sad</button>
+        <button class="tag" data-letter="hug">Need a Hug</button>
+        <button class="tag" data-letter="smile">Need a Smile</button>
+        <button class="tag" data-letter="cantSleep">Can't Sleep</button>
+        <button class="tag" data-letter="needMe">Need Me, I'm Here</button>
+        <button class="tag" data-letter="hectic">Hectic Day, It's OK</button>
+      </div>
+
+      <div id="letterBox" aria-live="polite" tabindex="0">
+        <p>Click any feeling above to read my letter for you.</p>
+      </div>
+    </section>
+
+    <!-- Reasons Sections -->
+
+    <section class="reasons-section" aria-label="Reasons I Trust You">
+      <h2>Here are 100 reasons why I trust you</h2>
+      <div class="reason-list" id="trustReasons"></div>
+    </section>
+
+    <section class="reasons-section" aria-label="Reasons I Love You">
+      <h2>Here are 100 reasons why I love you</h2>
+      <div class="reason-list" id="loveReasons"></div>
+    </section>
+
+    <section class="reasons-section" aria-label="Reasons I Need You">
+      <h2>Here are 100 reasons why I need you</h2>
+      <div class="reason-list" id="needReasons"></div>
+    </section>
+
+    <section class="reasons-section" aria-label="Reasons I Miss You">
+      <h2>Here are 100 reasons why I miss you</h2>
+      <div class="reason-list" id="missReasons"></div>
+    </section>
+
+    <!-- Final Wrap Up -->
+    <section id="finalWrap" aria-label="Final wrap up message">
+      <p>
+        14 is my favourite day because it's your day.<br>
+        Here are 14 reasons why I love you the most:<br><br>
+        1. Your smile lights up my darkest days.<br>
+        2. Your eyes hold a universe of kindness.<br>
+        3. You understand me without words.<br>
+        4. Your laugh is my favorite song.<br>
+        5. You make ordinary moments extraordinary.<br>
+        6. You are my safe place.<br>
+        7. Your strength inspires me.<br>
+        8. You make me a better person.<br>
+        9. Your heart beats in sync with mine.<br>
+        10. You love me with all my flaws.<br>
+        11. Your touch is my comfort.<br>
+        12. You believe in us always.<br>
+        13. You are my forever.<br>
+        14. You are my love, my life, my everything.<br>
+      </p>
+    </section>
+
+    <!-- Arabic Quotes Section -->
+    <section class="arabic-section" aria-label="Arabic love quotes">
+      <h2>14 Compliments for You</h2>
+      <div id="arabicText" aria-live="polite" tabindex="0">الحب هو الحياة</div>
+      <div id="urduTranslation" aria-live="polite" tabindex="0">محبت زندگی ہے</div>
+      <div id="heartTag">
+        <button aria-label="Show another compliment ❤️" title="Click to change quote">❤️</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Letters for feelings (long letters ~50 lines)
+    const letters = {
+      sad: `My Dearest JANA,
+
+Kya hua udaas ho? Hug chahiye? Ok aajao… maine hug kar liya 🤗
+Ab thoda better feel ho raha na?
+
+Acha kch bura hua? Mujhe pata hai kabhi kabhi sab kuch ajeeb lagta hai, bina wajah dil udaas ho jaata hai.
+koi bt ni it's ok sb thk ha me apk balo me hath pher rhi hu or apko  zor se hug kia hua sb thk ha ok ap strong ho mje ap pr trust ha pura main hmesha apk sath hu ok..... ❤️
+
+Ho sakta hai main abhi contact me nahi hoon, par iska matlab ye nahi ke main door hoon.
+Main yahan hoon… dil me, soch me, aur har wo lamha me jab aap thoda down feel karte ho.
+
+Aapko pata hai na, mujhe aapki smile kitni pasand hai…
+wo ek chhoti si smile pura mood better kar deti hai.
+Is liye please, thoda smile kar lo, warna mujhe khud aana padega hasane 😌💋
+
+Aur haan, aapka ye udaas face bilkul acha nahi lagta mujhe 😤
+to ab mood theek karo, kuch acha kha lo, thoda relax karo…
+aur yaad rakho, main hamesha yahan hoon, chahe thoda door hi sahi 💖
+
+Bas ab zyada sochna mat…
+warna agli baar milke double hug dungi, samjhe? 😜💞
+
+Apki Jaan,
+Sadia`,
+
+      hug: `My WHOLE WORLD,
+
+Kia hua thk gae ha ya mje miss kr rhe ha? sb thk ha na jana? zada miss kr rhe to b bta de me bilkl b kch ni khugi a kr zor se hug krege to b bilkl b mind ni krugi me. acha chlo ajo ankhe bnd kro or mhsoos kro me apk pas hu apko zor se hug kr rhi hu apko piyari se forhead kiss ki UMMMMMMMMAHHHHHHH...... I love you ok? sb thk ha me hu yha apk pas.
+Listen jb sb bht zada mushkil ho jae to yd rkhna me hu chahe kch b ho jae mje zor se hug kr lena me apko mhfooz kr lugi jo b extra sochte ho mt socha kro please apko jb b lge ap kmzor pr rhe ho ap mje hug kr skte ho me mzak ni bnaoge
+na apko taunt krugi me apko smbhal lugi ok chlo ankhe bnd kro me n apko zor se hug kia hua mje ap pr proud ha mje apk sath safe feel hota ha is lie ye mt sochna k mere sath bura kr rhe hifazat krne wala aisa ni socha krte i love you jana.....
+
+Forever yours,
+Sadia`,
+
+      smile: `Hey MR.Noman,
+
+Hey kia khroos angry bird ki trha bne hue ho kia ha kia hua kisi pr gssa ya wse hi krle smile smile krne k bilkl b paise ni lgte ni to me apko kch dikha skti mood bht khtrnak kr skti hu hahahaa wse smile free ha iska tax ni ha apki smile mje bht psnd ha q k smile krte wqt apki ankhe chmkti ha apka face ki shape bht piyari ho jati ha mje ap sbs zada hseen lgte ho aise jisk eik muskrahat k lie puri duniyar thukrae jati ha aisa mhsoos hota ha jaise mere puri duniya mehak chuki hu apki smile se me sb bhool skti hu to ye bht qeemti ha
+life me kch na kch hota rhta ha hme bs is bt pr ykeeen rkhna ha ye hmesha k lie ni ha or sb eik jaise ni hote life easy ho jaege or kisi k lie is smile ko kbi mt khona apn lie na shi ye yd rkhna ism kisi ki puri duniya bsti ha ok?
+ab smile kro shabash jldi se mera energylevel bht down ho rha jldi jldi kro na mera bp low ho rha me mr gae to apk zime aoge jldi jldi kro oh me gae..........
+Aise bilkl aise hi smile krni ha ap mere puri duniya hophr hm jha b ho ye qeemti ha isse amanat smjo or iska khyal rkho ok?
+that's my man i love you aise hi smile krte rho...
+
+Love always,
+Sadia`,
+
+      cantSleep: `My Love,
+
+Kia hua bor ho rhe ho neend ni a rhi hm mje b ni a rhi haha eik kam krte stone game khelte ya ye sochte mere ghari pr abi kia bj rhe ha ao hug krti hu shrart ni krugi rlx ho jae aise kr dete pr smja kre you can call me anytime I love you....
+
+Always,
+Sadia`,
+
+      needMe: `Hey Sweetheart,
+
+Whenever you need me, just remember — I am here. Not just in moments of joy, but in all the ups and downs, the quiet and the chaos. My heart beats for you and with you.
+
+No matter how far apart, you are never alone. Reach out, call out, and I will be right by your side, in heart and soul.
+
+Together, always.
+
+Yours forever,
+Sadia`,
+
+      hectic: `My Dearest,
+
+Life can be hectic and overwhelming, but it’s okay. Breathe, take a moment, and let my love be your calm in the storm.
+
+Even on the busiest days, know that you are loved beyond words. No matter the chaos, our bond remains unbreakable. You’re stronger than you think, and I’m so proud of you.
+
+Remember to pause, smile, and feel my love carrying you through.
+
+With endless support,
+Sadia`
+    };
+
+    // Handling feeling tag clicks to show letters
+    const tagButtons = document.querySelectorAll('.tag');
+    const letterBox = document.getElementById('letterBox');
+
+    tagButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-letter');
+        letterBox.textContent = letters[key];
+        letterBox.focus();
+      });
+    });
+
+    // 100 reasons arrays (sample placeholders, you can expand or customize)
+    const trustReasons = [
+  "Reason #1: I trust you because you always keep your promises.",
+  "Reason #2: I trust you because you understand me even when I’m silent.",
+  "Reason #3: I trust you because you never judge me, no matter what.",
+  "Reason #4: I trust you because your heart is pure and kind.",
+  "Reason #5: I trust you because you make me feel safe.",
+  "Reason #6: I trust you because you always listen with patience.",
+  "Reason #7: I trust you because you stand by me in every situation.",
+  "Reason #8: I trust you because you respect my feelings.",
+  "Reason #9: I trust you because you never let me feel alone.",
+  "Reason #10: I trust you because you always speak the truth.",
+  "Reason #11: I trust you because your eyes show honesty.",
+  "Reason #12: I trust you because you make my worries lighter.",
+  "Reason #13: I trust you because you never break your word.",
+  "Reason #14: I trust you because you believe in me.",
+  "Reason #15: I trust you because you care without conditions.",
+  "Reason #16: I trust you because you always check on me.",
+  "Reason #17: I trust you because you bring peace to my chaos.",
+  "Reason #18: I trust you because your intentions are always genuine.",
+  "Reason #19: I trust you because you never fake your emotions.",
+  "Reason #20: I trust you because you always encourage me.",
+  "Reason #21: I trust you because you never take me for granted.",
+  "Reason #22: I trust you because you make me laugh even in pain.",
+  "Reason #23: I trust you because you stay calm when I overthink.",
+  "Reason #24: I trust you because you always protect my heart.",
+  "Reason #25: I trust you because you’re honest even when it’s hard.",
+  "Reason #26: I trust you because you keep my secrets safe.",
+  "Reason #27: I trust you because you never compare me to others.",
+  "Reason #28: I trust you because you appreciate little things.",
+  "Reason #29: I trust you because you never lie just to please me.",
+  "Reason #30: I trust you because you make me feel valued.",
+  "Reason #31: I trust you because you always find time for me.",
+  "Reason #32: I trust you because you know how to calm me down.",
+  "Reason #33: I trust you because you’re loyal and sincere.",
+  "Reason #34: I trust you because you accept me as I am.",
+  "Reason #35: I trust you because you always choose honesty over comfort.",
+  "Reason #36: I trust you because your love feels real.",
+  "Reason #37: I trust you because you support my dreams.",
+  "Reason #38: I trust you because you never let me feel weak.",
+  "Reason #39: I trust you because you never walk away in silence.",
+  "Reason #40: I trust you because you’re my peace in a noisy world.",
+  "Reason #41: I trust you because you never make me doubt your loyalty.",
+  "Reason #42: I trust you because you remember what matters to me.",
+  "Reason #43: I trust you because you’re transparent with your heart.",
+  "Reason #44: I trust you because you never pretend to be someone else.",
+  "Reason #45: I trust you because you’re real with me.",
+  "Reason #46: I trust you because you never give up on us.",
+  "Reason #47: I trust you because you apologize when you’re wrong.",
+  "Reason #48: I trust you because you forgive with kindness.",
+  "Reason #49: I trust you because you always want the best for me.",
+  "Reason #50: I trust you because your love feels effortless.",
+  "Reason #51: I trust you because you make me a better person.",
+  "Reason #52: I trust you because you remind me of my worth.",
+  "Reason #53: I trust you because you’re consistent and stable.",
+  "Reason #54: I trust you because you never play mind games.",
+  "Reason #55: I trust you because you make me feel seen and heard.",
+  "Reason #56: I trust you because your actions match your words.",
+  "Reason #57: I trust you because you never let me question your care.",
+  "Reason #58: I trust you because you choose love even in anger.",
+  "Reason #59: I trust you because you handle my moods patiently.",
+  "Reason #60: I trust you because you love me on my bad days too.",
+  "Reason #61: I trust you because you never let ego win over love.",
+  "Reason #62: I trust you because you make effort without being asked.",
+  "Reason #63: I trust you because you’re always genuine with your feelings.",
+  "Reason #64: I trust you because you never make promises you can’t keep.",
+  "Reason #65: I trust you because your words bring comfort.",
+  "Reason #66: I trust you because you always choose kindness.",
+  "Reason #67: I trust you because you respect my space.",
+  "Reason #68: I trust you because you never make me doubt your love.",
+  "Reason #69: I trust you because you’re emotionally honest.",
+  "Reason #70: I trust you because you never hide your true self.",
+  "Reason #71: I trust you because you make me believe in love again.",
+  "Reason #72: I trust you because you always have my back.",
+  "Reason #73: I trust you because you bring light into my life.",
+  "Reason #74: I trust you because you always understand my silence.",
+  "Reason #75: I trust you because you never make me feel less.",
+  "Reason #76: I trust you because you’re my calm in chaos.",
+  "Reason #77: I trust you because you love me for who I am.",
+  "Reason #78: I trust you because you remind me of what matters.",
+  "Reason #79: I trust you because you never make me question your heart.",
+  "Reason #80: I trust you because you care even from miles away.",
+  "Reason #81: I trust you because you never make me chase your attention.",
+  "Reason #82: I trust you because you stay even when things get tough.",
+  "Reason #83: I trust you because you’re honest about your feelings.",
+  "Reason #84: I trust you because you don’t hide when I need you most.",
+  "Reason #85: I trust you because your presence itself brings peace.",
+  "Reason #86: I trust you because you never leave me guessing.",
+  "Reason #87: I trust you because your love feels like home.",
+  "Reason #88: I trust you because you never stop trying.",
+  "Reason #89: I trust you because you make me feel enough.",
+  "Reason #90: I trust you because you always make things right.",
+  "Reason #91: I trust you because you don’t run from problems.",
+  "Reason #92: I trust you because you speak from the heart.",
+  "Reason #93: I trust you because you make me feel secure.",
+  "Reason #94: I trust you because you love me in my worst moments.",
+  "Reason #95: I trust you because you never use my weakness against me.",
+  "Reason #96: I trust you because you bring out the best in me.",
+  "Reason #97: I trust you because you never stop believing in us.",
+  "Reason #98: I trust you because you make my world brighter.",
+  "Reason #99: I trust you because you’ve never let me down.",
+  "Reason #100: I trust you because you are you — and that’s enough. 💖"
+];
+
+console.log(trustReasons);
+
+   const loveReasons = [
+  "Reason #1: I love you because your smile brightens even my darkest days.",
+  "Reason #2: I love you because you make ordinary moments special.",
+  "Reason #3: I love you because you understand me without words.",
+  "Reason #4: I love you because your laughter is my favorite sound.",
+  "Reason #5: I love you because you make me feel seen and valued.",
+  "Reason #6: I love you because you never fail to make me laugh.",
+  "Reason #7: I love you because you care about the little things.",
+  "Reason #8: I love you because your hugs feel like home.",
+  "Reason #9: I love you because you’re kind even when no one’s watching.",
+  "Reason #10: I love you because your heart is pure and full of love.",
+  "Reason #11: I love you because you believe in me more than I do.",
+  "Reason #12: I love you because you bring peace to my chaos.",
+  "Reason #13: I love you because you’re my favorite kind of weird.",
+  "Reason #14: I love you because you always make me feel special.",
+  "Reason #15: I love you because your eyes tell me everything words can’t.",
+  "Reason #16: I love you because you inspire me to be better.",
+  "Reason #17: I love you because you make every place feel like home.",
+  "Reason #18: I love you because you never give up on me.",
+  "Reason #19: I love you because you’re patient with my moods.",
+  "Reason #20: I love you because you love me when I’m unlovable.",
+  "Reason #21: I love you because you bring out the best in me.",
+  "Reason #22: I love you because you make love feel easy.",
+  "Reason #23: I love you because you listen, even when I talk nonsense.",
+  "Reason #24: I love you because you make my heart smile.",
+  "Reason #25: I love you because you’re the calm to my storm.",
+  "Reason #26: I love you because you make life so much brighter.",
+  "Reason #27: I love you because you always know how to cheer me up.",
+  "Reason #28: I love you because you’re my safe space.",
+  "Reason #29: I love you because your presence makes everything better.",
+  "Reason #30: I love you because you’re my favorite hello and hardest goodbye.",
+  "Reason #31: I love you because you never stop making me laugh.",
+  "Reason #32: I love you because you see beauty in my flaws.",
+  "Reason #33: I love you because you treat me with respect.",
+  "Reason #34: I love you because you know my soul.",
+  "Reason #35: I love you because you’re effortlessly you.",
+  "Reason #36: I love you because you’re my biggest supporter.",
+  "Reason #37: I love you because you’re always there when I need you.",
+  "Reason #38: I love you because you love me for who I am.",
+  "Reason #39: I love you because you make every day worth waking up to.",
+  "Reason #40: I love you because you give the best advice.",
+  "Reason #41: I love you because you never let me feel alone.",
+  "Reason #42: I love you because you make my world complete.",
+  "Reason #43: I love you because you’re the reason I believe in love.",
+  "Reason #44: I love you because you remember the small details.",
+  "Reason #45: I love you because your voice feels like comfort.",
+  "Reason #46: I love you because you’re my peace in chaos.",
+  "Reason #47: I love you because you never stop trying.",
+  "Reason #48: I love you because you make me laugh until I cry.",
+  "Reason #49: I love you because you’re the best part of my story.",
+  "Reason #50: I love you because you’re everything I prayed for.",
+  "Reason #51: I love you because you never make me feel less.",
+  "Reason #52: I love you because you turn my bad days around.",
+  "Reason #53: I love you because you understand my silence.",
+  "Reason #54: I love you because you make me feel lucky every day.",
+  "Reason #55: I love you because you’re my constant in a changing world.",
+  "Reason #56: I love you because you never fake your feelings.",
+  "Reason #57: I love you because you challenge me to grow.",
+  "Reason #58: I love you because you believe in us.",
+  "Reason #59: I love you because you make me feel at peace.",
+  "Reason #60: I love you because you’re my sunshine after the rain.",
+  "Reason #61: I love you because you’re the best part of my day.",
+  "Reason #62: I love you because you make me smile for no reason.",
+  "Reason #63: I love you because your love feels real and pure.",
+  "Reason #64: I love you because you never stop caring.",
+  "Reason #65: I love you because you make me feel complete.",
+  "Reason #66: I love you because you make every moment magical.",
+  "Reason #67: I love you because you remind me of what love truly means.",
+  "Reason #68: I love you because you’re my favorite human.",
+  "Reason #69: I love you because you handle my chaos with grace.",
+  "Reason #70: I love you because you make me laugh at myself.",
+  "Reason #71: I love you because you always believe in my dreams.",
+  "Reason #72: I love you because you hold my heart so gently.",
+  "Reason #73: I love you because you make my world feel right.",
+  "Reason #74: I love you because you never let distance dull our bond.",
+  "Reason #75: I love you because you never stop making me feel special.",
+  "Reason #76: I love you because you’re my comfort zone.",
+  "Reason #77: I love you because you’re my reason to smile.",
+  "Reason #78: I love you because you’re everything I didn’t know I needed.",
+  "Reason #79: I love you because you make me feel safe to be myself.",
+  "Reason #80: I love you because you’re my peace after chaos.",
+  "Reason #81: I love you because you always choose love over ego.",
+  "Reason #82: I love you because your love feels effortless.",
+  "Reason #83: I love you because you always make me feel wanted.",
+  "Reason #84: I love you because you never stop showing care.",
+  "Reason #85: I love you because you remind me that love is beautiful.",
+  "Reason #86: I love you because you make me feel understood.",
+  "Reason #87: I love you because you’re the most genuine soul I know.",
+  "Reason #88: I love you because you’re my favorite place to be.",
+  "Reason #89: I love you because you’re my calm after every storm.",
+  "Reason #90: I love you because you make my heart skip a beat.",
+  "Reason #91: I love you because you never let me give up.",
+  "Reason #92: I love you because you’re my forever kind of person.",
+  "Reason #93: I love you because you make everything feel possible.",
+  "Reason #94: I love you because you never get tired of my drama.",
+  "Reason #95: I love you because you love me through it all.",
+  "Reason #96: I love you because you make me believe in forever.",
+  "Reason #97: I love you because you fill my life with light.",
+  "Reason #98: I love you because you’re my heart’s favorite person.",
+  "Reason #99: I love you because you’re my home in human form.",
+  "Reason #100: I love you because you are you — and that’s enough. ❤️"
+];
+
+console.log(loveReasons);
+    const needReasons = [
+  "Reason #1: I need you because your presence makes my world feel complete.",
+  "Reason #2: I need you because your voice calms my heart instantly.",
+  "Reason #3: I need you because no one understands me like you do.",
+  "Reason #4: I need you because you bring peace to my chaos.",
+  "Reason #5: I need you because your support gives me strength every day.",
+  "Reason #6: I need you because your smile reminds me that everything will be okay.",
+  "Reason #7: I need you because you make my ordinary days feel special.",
+  "Reason #8: I need you because your hugs feel like home.",
+  "Reason #9: I need you because you bring light into my darkest moments.",
+  "Reason #10: I need you because you keep me grounded when life gets crazy.",
+  "Reason #11: I need you because your love keeps me going.",
+  "Reason #12: I need you because you make me feel safe, always.",
+  "Reason #13: I need you because you remind me of my worth.",
+  "Reason #14: I need you because you’re the calm to my storm.",
+  "Reason #15: I need you because I can be myself with you.",
+  "Reason #16: I need you because you make life feel meaningful.",
+  "Reason #17: I need you because you never let me face things alone.",
+  "Reason #18: I need you because you believe in me even when I don’t.",
+  "Reason #19: I need you because your energy feels like home.",
+  "Reason #20: I need you because your love feels like magic.",
+  "Reason #21: I need you because you make me laugh when I want to cry.",
+  "Reason #22: I need you because you know how to handle my silence.",
+  "Reason #23: I need you because your presence makes everything better.",
+  "Reason #24: I need you because you’re my peace in this noisy world.",
+  "Reason #25: I need you because you listen — really listen.",
+  "Reason #26: I need you because your touch melts away my stress.",
+  "Reason #27: I need you because you bring balance to my life.",
+  "Reason #28: I need you because you give me purpose.",
+  "Reason #29: I need you because you make my heart feel full.",
+  "Reason #30: I need you because you remind me what love truly means.",
+  "Reason #31: I need you because you never give up on me.",
+  "Reason #32: I need you because you make me feel alive.",
+  "Reason #33: I need you because your love is my safe place.",
+  "Reason #34: I need you because you make my fears fade away.",
+  "Reason #35: I need you because you know how to make me smile.",
+  "Reason #36: I need you because you make my world brighter.",
+  "Reason #37: I need you because your heart is pure and kind.",
+  "Reason #38: I need you because you hold my hand through tough times.",
+  "Reason #39: I need you because your love feels real.",
+  "Reason #40: I need you because you complete the missing part of me.",
+  "Reason #41: I need you because you keep me motivated.",
+  "Reason #42: I need you because you make my dreams feel possible.",
+  "Reason #43: I need you because I can’t imagine life without you.",
+  "Reason #44: I need you because your love gives me hope.",
+  "Reason #45: I need you because your smile heals me.",
+  "Reason #46: I need you because you’re my safe escape.",
+  "Reason #47: I need you because you make loneliness disappear.",
+  "Reason #48: I need you because you’re my favorite person.",
+  "Reason #49: I need you because you make love feel easy.",
+  "Reason #50: I need you because you bring peace to my soul.",
+  "Reason #51: I need you because you know my heart.",
+  "Reason #52: I need you because you make me want to be better.",
+  "Reason #53: I need you because you fill my life with meaning.",
+  "Reason #54: I need you because you understand me without words.",
+  "Reason #55: I need you because you never let me fall apart.",
+  "Reason #56: I need you because you make my world softer.",
+  "Reason #57: I need you because you’re the one I always run to.",
+  "Reason #58: I need you because your love feels like peace after war.",
+  "Reason #59: I need you because you never fail to comfort me.",
+  "Reason #60: I need you because you’re my person, my heart, my home.",
+  "Reason #61: I need you because you make me believe in love again.",
+  "Reason #62: I need you because you hold my world together.",
+  "Reason #63: I need you because you make every moment count.",
+  "Reason #64: I need you because you’re my constant support.",
+  "Reason #65: I need you because your presence feels like sunshine.",
+  "Reason #66: I need you because you remind me I’m not alone.",
+  "Reason #67: I need you because you’re my peace of mind.",
+  "Reason #68: I need you because your words heal my heart.",
+  "Reason #69: I need you because you understand my chaos.",
+  "Reason #70: I need you because you’re my forever kind of person.",
+  "Reason #71: I need you because your love keeps me grounded.",
+  "Reason #72: I need you because you make my life beautiful.",
+  "Reason #73: I need you because you never let me give up.",
+  "Reason #74: I need you because you know how to make me feel better.",
+  "Reason #75: I need you because your care feels genuine.",
+  "Reason #76: I need you because you make me laugh through tears.",
+  "Reason #77: I need you because you see the good in me.",
+  "Reason #78: I need you because your love is unconditional.",
+  "Reason #79: I need you because you make everything easier.",
+  "Reason #80: I need you because you’re my reason to smile.",
+  "Reason #81: I need you because you make life worth living.",
+  "Reason #82: I need you because your energy feels like home.",
+  "Reason #83: I need you because you make my heart feel safe.",
+  "Reason #84: I need you because you’re the light in my darkness.",
+  "Reason #85: I need you because you’re my reminder that love is real.",
+  "Reason #86: I need you because you’re my safe place to fall.",
+  "Reason #87: I need you because you never let go, even when I drift.",
+  "Reason #88: I need you because you understand my unspoken feelings.",
+  "Reason #89: I need you because you always know what to say.",
+  "Reason #90: I need you because you fill my heart with love.",
+  "Reason #91: I need you because you make me feel like I belong.",
+  "Reason #92: I need you because you turn my pain into peace.",
+  "Reason #93: I need you because you’re my favorite part of life.",
+  "Reason #94: I need you because your love is my comfort zone.",
+  "Reason #95: I need you because you bring meaning to my chaos.",
+  "Reason #96: I need you because you’re my forever person.",
+  "Reason #97: I need you because you’re my strength when I’m weak.",
+  "Reason #98: I need you because you make me feel whole.",
+  "Reason #99: I need you because you’re my everything in one person.",
+  "Reason #100: I need you because I simply can’t imagine my world without you. ❤️"
+];
+
+console.log(needReasons);
+
+    const missReasons = [
+  "Reason #1: I miss you because your smile makes my whole day brighter.",
+  "Reason #2: I miss you because your laugh echoes in my heart even when you're not here.",
+  "Reason #3: I miss you because nothing feels the same without you.",
+  "Reason #4: I miss you because I keep checking my phone hoping it’s you.",
+  "Reason #5: I miss you because your voice is my favorite sound.",
+  "Reason #6: I miss you because your hugs make everything feel better.",
+  "Reason #7: I miss you because you’re my calm in the chaos.",
+  "Reason #8: I miss you because I can’t tell my stories without wanting you to hear them.",
+  "Reason #9: I miss you because you make even silence feel special.",
+  "Reason #10: I miss you because every song reminds me of you.",
+  "Reason #11: I miss you because I still see your face in every crowd.",
+  "Reason #12: I miss you because I crave your warmth when the world feels cold.",
+  "Reason #13: I miss you because no one makes me laugh like you do.",
+  "Reason #14: I miss you because your absence makes everything dull.",
+  "Reason #15: I miss you because I miss your good morning and goodnight texts.",
+  "Reason #16: I miss you because you always know how to make me smile.",
+  "Reason #17: I miss you because you make ordinary things feel special.",
+  "Reason #18: I miss you because I can’t share my random thoughts with anyone else.",
+  "Reason #19: I miss you because you’re my favorite part of every day.",
+  "Reason #20: I miss you because I can’t look at the stars without thinking of you.",
+  "Reason #21: I miss you because every place reminds me of you.",
+  "Reason #22: I miss you because I wish I could hold your hand right now.",
+  "Reason #23: I miss you because I still imagine your laugh echoing in my ears.",
+  "Reason #24: I miss you because your name still makes my heart skip a beat.",
+  "Reason #25: I miss you because you make my world feel right.",
+  "Reason #26: I miss you because even my favorite things feel boring without you.",
+  "Reason #27: I miss you because your messages are my favorite part of the day.",
+  "Reason #28: I miss you because your love feels like home.",
+  "Reason #29: I miss you because I replay our memories in my mind every day.",
+  "Reason #30: I miss you because you’re my peace of mind.",
+  "Reason #31: I miss you because your absence feels louder than any noise.",
+  "Reason #32: I miss you because I miss seeing your goofy smile.",
+  "Reason #33: I miss you because I want to tell you about my day.",
+  "Reason #34: I miss you because you made me feel understood.",
+  "Reason #35: I miss you because I can’t hug you when I need comfort.",
+  "Reason #36: I miss you because even time feels slower without you.",
+  "Reason #37: I miss you because I still catch myself looking for you.",
+  "Reason #38: I miss you because you’re my favorite person to talk to.",
+  "Reason #39: I miss you because your love gives me strength.",
+  "Reason #40: I miss you because your eyes felt like home.",
+  "Reason #41: I miss you because I still smile at our memories.",
+  "Reason #42: I miss you because everything reminds me of you.",
+  "Reason #43: I miss you because you made me laugh at everything.",
+  "Reason #44: I miss you because I want to see your face again.",
+  "Reason #45: I miss you because I want to hear your voice just once more.",
+  "Reason #46: I miss you because no one feels like you.",
+  "Reason #47: I miss you because I still write things I wish I could tell you.",
+  "Reason #48: I miss you because you made my world feel softer.",
+  "Reason #49: I miss you because I miss the comfort of your presence.",
+  "Reason #50: I miss you because I miss the way you said my name.",
+  "Reason #51: I miss you because every little thing reminds me of you.",
+  "Reason #52: I miss you because I want to sit beside you in silence again.",
+  "Reason #53: I miss you because your absence feels like a missing heartbeat.",
+  "Reason #54: I miss you because I can’t share my laughter with you.",
+  "Reason #55: I miss you because your love felt like sunshine.",
+  "Reason #56: I miss you because even the sky feels empty without you.",
+  "Reason #57: I miss you because I wish you were here to hold me.",
+  "Reason #58: I miss you because you’re the peace my heart craves.",
+  "Reason #59: I miss you because I can’t stop thinking of you.",
+  "Reason #60: I miss you because you’re my home no matter where I am.",
+  "Reason #61: I miss you because your energy brightens everything.",
+  "Reason #62: I miss you because I feel your absence in everything I do.",
+  "Reason #63: I miss you because your laughter still echoes in my heart.",
+  "Reason #64: I miss you because your love felt like magic.",
+  "Reason #65: I miss you because I still wait for your messages.",
+  "Reason #66: I miss you because your presence made everything beautiful.",
+  "Reason #67: I miss you because your kindness still warms my heart.",
+  "Reason #68: I miss you because I want to share my happiness with you.",
+  "Reason #69: I miss you because I can’t look at my phone without wishing for your text.",
+  "Reason #70: I miss you because your touch felt like peace.",
+  "Reason #71: I miss you because you’re the only one who feels like home.",
+  "Reason #72: I miss you because even my dreams remind me of you.",
+  "Reason #73: I miss you because you made love feel so easy.",
+  "Reason #74: I miss you because no one makes me feel the way you do.",
+  "Reason #75: I miss you because you’re always in my thoughts.",
+  "Reason #76: I miss you because even silence reminds me of you.",
+  "Reason #77: I miss you because you’re the person I can’t unlove.",
+  "Reason #78: I miss you because my heart feels incomplete without you.",
+  "Reason #79: I miss you because I still look for you in every place I go.",
+  "Reason #80: I miss you because you’re my reason to smile.",
+  "Reason #81: I miss you because I want to talk to you about everything.",
+  "Reason #82: I miss you because your memory still brings warmth to my soul.",
+  "Reason #83: I miss you because your absence makes me realize your value.",
+  "Reason #84: I miss you because no one else understands me like you.",
+  "Reason #85: I miss you because you’re my heart’s favorite person.",
+  "Reason #86: I miss you because I still wait to hear from you.",
+  "Reason #87: I miss you because your love is still my comfort.",
+  "Reason #88: I miss you because my heart still whispers your name.",
+  "Reason #89: I miss you because you made everything feel right.",
+  "Reason #90: I miss you because I can’t stop wishing you were here.",
+  "Reason #91: I miss you because you were my peace in chaos.",
+  "Reason #92: I miss you because you’re the missing piece of my heart.",
+  "Reason #93: I miss you because I still find you in my thoughts.",
+  "Reason #94: I miss you because my heart feels empty without you.",
+  "Reason #95: I miss you because you were my favorite part of every day.",
+  "Reason #96: I miss you because you’re the one I always want near.",
+  "Reason #97: I miss you because you’re my safe space, even in memories.",
+  "Reason #98: I miss you because your love still lingers in my soul.",
+  "Reason #99: I miss you because you’re the person I’ll always long for.",
+  "Reason #100: I miss you because my world just isn’t the same without you. ❤️"
+];
+
+console.log(missReasons);
+
+
+    // Render reasons into respective containers
+    function renderReasons(id, reasons) {
+      const container = document.getElementById(id);
+      container.innerHTML = reasons.map(r => `<p>${r}</p>`).join('');
+    }
+
+    renderReasons('trustReasons', trustReasons);
+    renderReasons('loveReasons', loveReasons);
+    renderReasons('needReasons', needReasons);
+    renderReasons('missReasons', missReasons);
+
+    // Arabic quotes and translations
+    const arabicQuotes = [
+      {arabic: "الحب هو الحياة", urdu: "محبت زندگی ہے"},
+      {arabic: "أنت نبضي", urdu: "تم میری دھڑکن ہو"},
+      {arabic: "قلبي ملكك", urdu: "میرا دل تمہارا ہے"},
+      {arabic: "معك للأبد", urdu: "ہمیشہ تمہارے ساتھ"},
+      {arabic: "نور عيني", urdu: "میری آنکھوں کا نور"},
+      {arabic: "أنت حياتي", urdu: "تم میری زندگی ہو"},
+      {arabic: "حبي لك لا نهاية له", urdu: "میری محبت تمہارے لیے بے انتہا ہے"},
+      {arabic: "روحك في روحي", urdu: "تمہاری روح میری روح میں ہے"},
+      {arabic: "كل يوم أحبك أكثر", urdu: "ہر دن تم سے زیادہ محبت کرتا ہوں"},
+      {arabic: "أنت عالمي", urdu: "تم میری دنیا ہو"},
+      {arabic: "أنت سعادتي", urdu: "تم میری خوشی ہو"},
+      {arabic: "أنت قلبي", urdu: "تم میرا دل ہو"},
+      {arabic: "معك أشعر بالأمان", urdu: "تمہارے ساتھ میں محفوظ ہوں"},
+      {arabic: "أنت أجمل هدية", urdu: "تم سب سے خوبصورت تحفہ ہو"},
+    ];
+
+    let currentQuoteIndex = 0;
+    const arabicTextEl = document.getElementById('arabicText');
+    const urduTranslationEl = document.getElementById('urduTranslation');
+    const heartBtn = document.querySelector('#heartTag button');
+
+    function showNextQuote() {
+      currentQuoteIndex = (currentQuoteIndex + 1) % arabicQuotes.length;
+      const {arabic, urdu} = arabicQuotes[currentQuoteIndex];
+      arabicTextEl.textContent = arabic;
+      urduTranslationEl.textContent = urdu;
+    }
+    heartBtn.addEventListener('click', showNextQuote);
+window.onload = function() {
+  const canvas = document.getElementById("stars");
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  const stars = [];
+  const numStars = 150;
+
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5,
+      a: Math.random(),
+      speed: Math.random() * 0.2 + 0.05
+    });
+  }
+
+  function draw() {
+    ctx.fillStyle = "rgba(0, 0, 20, 0.2)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let s of stars) {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+      ctx.fillStyle = `rgba(255, 255, 255, ${s.a})`;
+      ctx.fill();
+
+      s.a += (Math.random() - 0.5) * 0.05;
+      if (s.a < 0) s.a = 0;
+      if (s.a > 1) s.a = 1;
+
+      s.y += s.speed;
+      if (s.y > canvas.height) {
+        s.y = 0;
+        s.x = Math.random() * canvas.width;
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+};
+
+  </script>
+
+</body>
+</html>
